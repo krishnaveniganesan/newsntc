@@ -10,7 +10,7 @@ ARG BUILDER_ROOTFS_IMAGE=mendix/rootfs:bionic
 FROM ${BUILDER_ROOTFS_IMAGE} AS builder
 
 # Build-time variables
-ARG BUILD_PATH=project
+ARG BUILD_PATH=sntcmain
 ARG DD_API_KEY
 # CF buildpack version
 ARG CF_BUILDPACK=v4.28.4
@@ -47,7 +47,7 @@ RUN mkdir -p /opt/mendix/buildpack /opt/mendix/build &&\
 COPY scripts/compilation scripts/git /opt/mendix/buildpack/
 
 # Copy project model/sources
-COPY $BUILD_PATH /opt/mendix/build
+COPY sntcmain /opt/mendix/build
 
 # Install the buildpack Python dependencies
 RUN chmod +rx /opt/mendix/buildpack/bin/bootstrap-python && /opt/mendix/buildpack/bin/bootstrap-python /opt/mendix/buildpack /tmp/buildcache
