@@ -1,0 +1,11 @@
+Buildfile: C:\Users\krish\OneDrive\Documents\Mendix\SNTC-main\deployment\build_core.xml
+
+deploy:
+     [copy] Copying 52 files to C:\Users\krish\OneDrive\Documents\Mendix\SNTC-main\deployment
+     [copy] Copying 309 files to C:\Users\krish\OneDrive\Documents\Mendix\SNTC-main\deployment\model\lib\userlib
+     [copy] Copying 141 files to C:\Users\krish\OneDrive\Documents\Mendix\SNTC-main\deployment\model\resources
+
+BUILD SUCCESSFUL
+Total time: 3 seconds
+
+

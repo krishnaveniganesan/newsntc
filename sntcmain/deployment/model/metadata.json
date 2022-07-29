@@ -1,0 +1,217 @@
+{
+  "RuntimeVersion": "9.15.0.47426",
+  "ProjectID": "6a87cd49-3be0-4aa4-98f7-533bb9a1f624",
+  "ProjectName": "SNTC",
+  "ModelVersion": "unversioned",
+  "Description": "",
+  "AdminUser": "SystemAdmin",
+  "Roles": {
+    "8dd52bfa-6d7e-453b-b506-303c0a3d9567": {
+      "Name": "SystemAdmin",
+      "ManageableRoles": [
+        "8dd52bfa-6d7e-453b-b506-303c0a3d9567",
+        "53f5d6fa-6da9-4a71-b011-454ec052cce8",
+        "5e8088e6-8759-4e00-b3cf-f3cfc54081e8",
+        "83585845-ff2e-40e2-9a2c-c8a1470abe3e",
+        "3c6ddf31-5609-40d2-9c04-d17309270690",
+        "99e4cbfd-df0d-4ec7-8534-af1997c5a389",
+        "993aaa0f-9656-4f27-b1ee-2698f83bf020",
+        "ee0a2133-35d1-4acd-b0d9-f7e4859a0065",
+        "24aaf6ca-2ea8-4ea7-ae33-f98a18b0568e",
+        "0aa1aa33-9b09-45a3-9887-b1dded62a812",
+        "e758f5ba-a164-46f4-9eb6-96ca33a3e542"
+      ]
+    },
+    "53f5d6fa-6da9-4a71-b011-454ec052cce8": {
+      "Name": "User"
+    },
+    "5e8088e6-8759-4e00-b3cf-f3cfc54081e8": {
+      "Name": "CaseManager"
+    },
+    "83585845-ff2e-40e2-9a2c-c8a1470abe3e": {
+      "Name": "TrustAdmin"
+    },
+    "3c6ddf31-5609-40d2-9c04-d17309270690": {
+      "Name": "CommunityEngagementOfficer"
+    },
+    "99e4cbfd-df0d-4ec7-8534-af1997c5a389": {
+      "Name": "SeniorCaseManager"
+    },
+    "993aaa0f-9656-4f27-b1ee-2698f83bf020": {
+      "Name": "SeniorManager"
+    },
+    "ee0a2133-35d1-4acd-b0d9-f7e4859a0065": {
+      "Name": "GeneralManager"
+    },
+    "24aaf6ca-2ea8-4ea7-ae33-f98a18b0568e": {
+      "Name": "SNTCuser",
+      "ManageableRoles": [
+        "993aaa0f-9656-4f27-b1ee-2698f83bf020"
+      ]
+    },
+    "0aa1aa33-9b09-45a3-9887-b1dded62a812": {
+      "Name": "Tenderer"
+    },
+    "e758f5ba-a164-46f4-9eb6-96ca33a3e542": {
+      "Name": "Settlor"
+    }
+  },
+  "AdminRole": "8dd52bfa-6d7e-453b-b506-303c0a3d9567",
+  "Constants": [
+    {
+      "Name": "MyFirstModule.DataSetIDReport2",
+      "Type": "String",
+      "Description": "",
+      "DefaultValue": "77151886-7d49-47b9-858a-3b5a589ce4fd"
+    },
+    {
+      "Name": "MyFirstModule.DataSetSntcReport",
+      "Type": "String",
+      "Description": "",
+      "DefaultValue": "88f2cb95-ac76-4239-9362-1cd83381f33a"
+    },
+    {
+      "Name": "MyFirstModule.EmbedURL",
+      "Type": "String",
+      "Description": "",
+      "DefaultValue": "https://app.powerbi.com/reportEmbed?reportId=1a36e18d-c539-412b-a86e-19d6a3890afc&groupId=1d48f11d-ba42-408d-844b-30bac9596a21&w=2&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly9XQUJJLUlORElBLUNFTlRSQUwtQS1QUklNQVJZLXJlZGlyZWN0LmFuYWx5c2lzLndpbmRvd3MubmV0IiwiZW1iZWRGZWF0dXJlcyI6eyJtb2Rlcm5FbWJlZCI6dHJ1ZSwiYW5ndWxhck9ubHlSZXBvcnRFbWJlZCI6dHJ1ZSwiY2VydGlmaWVkVGVsZW1ldHJ5RW1iZWQiOnRydWUsInVzYWdlTWV0cmljc1ZOZXh0Ijp0cnVlLCJza2lwWm9uZVBhdGNoIjp0cnVlfX0%3d"
+    },
+    {
+      "Name": "MyFirstModule.GroupID",
+      "Type": "String",
+      "Description": "",
+      "DefaultValue": "e46fa714-82aa-4d06-9827-052d2423c690"
+    },
+    {
+      "Name": "MyFirstModule.ReportID_Reprt2",
+      "Type": "String",
+      "Description": "",
+      "DefaultValue": "2a3663ec-2db7-4d76-8f8e-66de6f119d1d"
+    },
+    {
+      "Name": "MyFirstModule.ReportID_Sntc_Report",
+      "Type": "String",
+      "Description": "",
+      "DefaultValue": "1a36e18d-c539-412b-a86e-19d6a3890afc"
+    },
+    {
+      "Name": "Atlas_Core.Atlas_Core_Version",
+      "Type": "String",
+      "Description": "",
+      "DefaultValue": "3.0.7"
+    },
+    {
+      "Name": "Atlas_Web_Content.Atlas_Web_Content_Version",
+      "Type": "String",
+      "Description": "",
+      "DefaultValue": "3.0.6"
+    },
+    {
+      "Name": "CommunityCommons.MergeMultiplePdfs_MaxAtOnce",
+      "Type": "Integer",
+      "Description": "Restricted to 10 files at once for Mendix Cloud v4 compatibility. If you need to merge more than 10 files increase the number here. Setting the value to <=0 means unlimited.\r\n\r\nNote: We very strongly recommend to not increase the number for applications running in Mendix Cloud v4.",
+      "DefaultValue": "10"
+    },
+    {
+      "Name": "EmailTemplate.EmailAddressSeparator",
+      "Type": "String",
+      "Description": "",
+      "DefaultValue": ","
+    },
+    {
+      "Name": "EmailTemplate.EmailLogRetention",
+      "Type": "Integer",
+      "Description": "The amount of days to preserve error messages.",
+      "DefaultValue": "30"
+    },
+    {
+      "Name": "EmailTemplate.EmailRetention",
+      "Type": "Integer",
+      "Description": "The amount of days to preserve emails which were sent.",
+      "DefaultValue": "30"
+    },
+    {
+      "Name": "EmailTemplate.LogNode",
+      "Type": "String",
+      "Description": "",
+      "DefaultValue": "Email"
+    },
+    {
+      "Name": "EmailTemplate.SendingEnabled",
+      "Type": "Boolean",
+      "Description": "Sending emails is enabled by default. \r\nWhen setting this value to false emails won't be send. This is useful on test environments for example.",
+      "DefaultValue": "True"
+    },
+    {
+      "Name": "Encryption.EncryptionKey",
+      "Type": "String",
+      "Description": "This key will be used to encrypt and decrypt values.\r\nThe length of this key must be 32 characters.",
+      "DefaultValue": "12345678901234561234567890123456"
+    },
+    {
+      "Name": "Encryption.EncryptionPrefix",
+      "Type": "String",
+      "Description": "Prefix for stored encrypted values.\r\nThis value is used to determine whether the value has been already encrypted.\r\nThe prefix must be either {AES}, {AES2} or {AES3}.\r\nEncryption is only supported if the prefix is {AES3}.\r\nIt is not recommended to change this value.",
+      "DefaultValue": "{AES3}"
+    },
+    {
+      "Name": "Encryption.LegacyEncryptionKey",
+      "Type": "String",
+      "Description": "This key will be used to decrypt values that are encrypted with legacy algorithms.\r\nThe length of this key must be 16 characters.",
+      "DefaultValue": ""
+    },
+    {
+      "Name": "Encryption.LogNode",
+      "Type": "String",
+      "Description": "Node which appears in log messages for this module.",
+      "DefaultValue": "Encryption"
+    },
+    {
+      "Name": "NanoflowCommons.Nanoflow_Commons_Version",
+      "Type": "String",
+      "Description": "",
+      "DefaultValue": "2.1.0"
+    },
+    {
+      "Name": "WebActions.WebActions_Version",
+      "Type": "String",
+      "Description": "",
+      "DefaultValue": "2.3.0"
+    }
+  ],
+  "ScheduledEvents": [
+    {
+      "Name": "EmailTemplate.Cleanup",
+      "Description": ""
+    },
+    {
+      "Name": "EmailTemplate.SendQueuedEmails",
+      "Description": ""
+    }
+  ],
+  "Configuration": {
+    "SourceDatabaseType": "HSQLDB",
+    "SourceDatabaseName": "default",
+    "SourceBuiltInDatabasePath": "model/sampledata/data/database"
+  },
+  "DataBrokerConfiguration": {
+    "publishedServices": []
+  },
+  "RequestHandlers": [
+    {
+      "Name": "/api/",
+      "DefaultEnabled": true,
+      "MatchExactly": false
+    },
+    {
+      "Name": "/link/",
+      "DefaultEnabled": true,
+      "MatchExactly": false
+    },
+    {
+      "Name": "/p/",
+      "DefaultEnabled": true,
+      "MatchExactly": false
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+Buildfile: C:\Users\krish\OneDrive\Documents\Mendix\SNTC-main\deployment\build_core.xml
+
+compile:
+    [javac] Compiling 316 source files to C:\Users\krish\OneDrive\Documents\Mendix\SNTC-main\deployment\run\bin
+    [javac] Note: Some input files use or override a deprecated API.
+    [javac] Note: Recompile with -Xlint:deprecation for details.
+
+package:
+      [jar] Building jar: C:\Users\krish\OneDrive\Documents\Mendix\SNTC-main\deployment\model\bundles\project.jar
+
+BUILD SUCCESSFUL
+Total time: 12 seconds
+
+

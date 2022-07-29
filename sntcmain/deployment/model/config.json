@@ -1,0 +1,36 @@
+{
+  "Configuration": {
+    "DatabaseName": "default",
+    "DatabasePassword": "",
+    "DatabaseType": "HSQLDB",
+    "DatabaseHost": "",
+    "DatabaseUserName": "",
+    "DatabaseUseIntegratedSecurity": "False",
+    "ApplicationRootUrl": "http://localhost:8082/",
+    "ScheduledEventExecution": "Specified",
+    "MyScheduledEvents": "EmailTemplate.Cleanup"
+  },
+  "Constants": {
+    "MyFirstModule.ReportID_Sntc_Report": "1a36e18d-c539-412b-a86e-19d6a3890afc",
+    "MyFirstModule.EmbedURL": "https://app.powerbi.com/reportEmbed?reportId=1a36e18d-c539-412b-a86e-19d6a3890afc&groupId=1d48f11d-ba42-408d-844b-30bac9596a21&w=2&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly9XQUJJLUlORElBLUNFTlRSQUwtQS1QUklNQVJZLXJlZGlyZWN0LmFuYWx5c2lzLndpbmRvd3MubmV0IiwiZW1iZWRGZWF0dXJlcyI6eyJtb2Rlcm5FbWJlZCI6dHJ1ZSwiYW5ndWxhck9ubHlSZXBvcnRFbWJlZCI6dHJ1ZSwiY2VydGlmaWVkVGVsZW1ldHJ5RW1iZWQiOnRydWUsInVzYWdlTWV0cmljc1ZOZXh0Ijp0cnVlLCJza2lwWm9uZVBhdGNoIjp0cnVlfX0%3d",
+    "MyFirstModule.DataSetIDReport2": "77151886-7d49-47b9-858a-3b5a589ce4fd",
+    "MyFirstModule.DataSetSntcReport": "88f2cb95-ac76-4239-9362-1cd83381f33a",
+    "MyFirstModule.ReportID_Reprt2": "2a3663ec-2db7-4d76-8f8e-66de6f119d1d",
+    "MyFirstModule.GroupID": "e46fa714-82aa-4d06-9827-052d2423c690",
+    "Atlas_Core.Atlas_Core_Version": "3.0.7",
+    "Atlas_Web_Content.Atlas_Web_Content_Version": "3.0.6",
+    "CommunityCommons.MergeMultiplePdfs_MaxAtOnce": "10",
+    "EmailTemplate.EmailRetention": "30",
+    "EmailTemplate.EmailLogRetention": "30",
+    "EmailTemplate.SendingEnabled": "True",
+    "EmailTemplate.LogNode": "Email",
+    "EmailTemplate.EmailAddressSeparator": ",",
+    "Encryption.LogNode": "Encryption",
+    "Encryption.EncryptionPrefix": "{AES3}",
+    "Encryption.EncryptionKey": "12345678901234561234567890123456",
+    "Encryption.LegacyEncryptionKey": "",
+    "NanoflowCommons.Nanoflow_Commons_Version": "2.1.0",
+    "WebActions.WebActions_Version": "2.3.0"
+  },
+  "AdminPassword": "1"
+}
