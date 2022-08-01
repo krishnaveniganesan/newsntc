@@ -1,18 +1,21 @@
-...
+version: 0.2
+
+phases:
   pre_build:
     commands:
       - echo Logging in to Docker Hub...
-      - IMAGE_REPO_NAME="keerthiikrish/cicd:$BUILD_NUMBER"
+      - IMAGE_REPO_NAME="keerthiikrish/cicd"
+      - IMAGE_TAG=$BUILD_NUMBER
       - docker login -u keerthiikrish -p keerthi@22
 
   build:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
-      - docker build -t $IMAGE_REPO_NAME .
+      - docker build -t $REPOSITORY_URI:latest .
+      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
-      - docker push $IMAGE_REPO_NAME
-...
+      - docker push $IMAGE_REPO_NAME:$IMAGE_TAG  
