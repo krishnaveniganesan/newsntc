@@ -5,7 +5,7 @@ phases:
     commands:
       - echo Logging in to Docker Hub...
       - IMAGE_REPO_NAME="keerthiikrish/cicd"
-      - IMAGE_TAG=$BUILD_NUMBER
+      - IMAGE_TAG=10
       - docker login -u keerthiikrish -p keerthi@22
 
   build:
