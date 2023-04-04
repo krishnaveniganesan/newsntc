@@ -4,7 +4,7 @@ phases:
   pre_build:
     commands:
       - echo Logging in to Docker Hub...
-      - IMAGE_REPO_NAME="keerthiikrish/cicd"
+      - IMAGE_REPO_NAME="keerthiikrish/codepipeline"
       - IMAGE_TAG=$CODEBUILD_BUILD_NUMBER
       - docker login -u keerthiikrish -p keerthi@22
 
