@@ -27,7 +27,7 @@ phases:
  pre_build: # Add kubeconfig to access to EKS cluster
   commands:
    - echo Update kubeconfig…
-   - aws eks update-kubeconfig - name ${EKS_NAME} - region ${REGION}
+   - aws eks update-kubeconfig — name CICD — region us-east-1
    - kubectl version
  build: # Build Docker image and tag it with the commit sha
   commands:
