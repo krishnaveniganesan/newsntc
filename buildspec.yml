@@ -1,44 +1,47 @@
 version: 0.2
+run-as: root
+
 phases:
- install: # Install AWS cli, kubectl (needed for Helm) and Helm
-  commands:
-   - echo Set parameter
-   - REGION=us-east-1
-   - AWS_ACCOUNTID=846874986003
-   - ECR_NAME=cicd
-   - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
-   - IMAGE_TAG=${COMMIT_HASH:=latest}
-   - EKS_NAME=CICD
-   - REPOSITORY_URI=${AWS_ACCOUNTID}.dkr.ecr.${REGION}.amazonaws.com/${ECR_NAME}
-   - echo Logging to AWS ECR…
-   - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 846874986003.dkr.ecr.us-east-1.amazonaws.com
-   - echo Installing necessary library…
-   - apt-get update
-   - apt install -y awscli git python3
-   - curl -o aws-iam-authenticator https://amazon-eks.s3.us-west-2.amazonaws.com/1.21.2/2021-07-05/bin/linux/amd64/aws-iam-authenticator
-   - chmod +x ./aws-iam-authenticator
-   - mkdir -p ~/bin && cp ./aws-iam-authenticator ~/bin/aws-iam-authenticator && export PATH=~/bin:$PATH
-   - curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
-   - chmod +x kubectl
-   - mv ./kubectl /usr/local/bin/kubectl
-   - curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
-   - chmod 700 get_helm.sh
-   - ./get_helm.sh
- pre_build: # Add kubeconfig to access to EKS cluster
-  commands:
-   - echo Update kubeconfig…
-   - aws eks update-kubeconfig --region us-east-1 --name CICD
-   - kubectl version
- build: # Build Docker image and tag it with the commit sha
-  commands:
-   - echo Building docker image…
-   - docker build -t $REPOSITORY_URI:latest — file Dockerfile .
-   - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
- post_build: # Push the Docker image to the ECR
-  commands:
-   - echo Pushing ECR…
-   - docker push $REPOSITORY_URI:latest
-   - docker push $REPOSITORY_URI:$IMAGE_TAG
-   - echo Rollout new version
-   - echo kubectl set image deployment/$DEPLOYMENT_NAME [container name]=$REPOSITORY_URI:$IMAGE_TAG
-   - “kubectl set image deployment/$DEPLOYMENT_NAME [container name]=$REPOSITORY_URI:$IMAGE_TAG”
+
+  install:
+    commands:
+      - echo Installing app dependencies...
+      - curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.18.9/2020-11-02/bin/linux/amd64/kubectl   
+      - chmod +x ./kubectl
+      - mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$PATH:$HOME/bin
+      - echo 'export PATH=$PATH:$HOME/bin' >> ~/.bashrc
+      - source ~/.bashrc
+      - echo 'Check kubectl version'
+      - kubectl version --short --client
+      - chmod +x eks_cicd/prereqs.sh
+      - sh eks_cicd/prereqs.sh
+
+  pre_build:
+    commands:
+      - echo Logging in to Amazon EKS...
+      - aws eks --region $AWS_DEFAULT_REGION update-kubeconfig --name $AWS_CLUSTER_NAME
+      - echo check config 
+      - kubectl config view --minify
+      - echo check kubectl access
+      - kubectl get svc
+      - echo Logging in to Amazon ECR...
+      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+      - REPOSITORY_URI=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME
+      - docker pull $REPOSITORY_URI:$IMAGE_TAG
+      
+
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Building the Docker image...          
+      - docker build --cache-from $REPOSITORY_URI:$IMAGE_TAG -t $IMAGE_REPO_NAME:$IMAGE_TAG .
+      - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG 
+
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Pushing the Docker image...
+      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
+      - echo Push the latest image to cluster
+      - kubectl apply -f deployment.yaml
+      - kubectl rollout restart -f deployment.yaml
